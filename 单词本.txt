@@ -16,7 +16,6 @@ char
 double
 float
 
-
 null
 undefined
 boolean
