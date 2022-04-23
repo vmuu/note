@@ -353,7 +353,13 @@
 
 ##### 类型匹配验证
 
-差
+| **type** **属性** | **说明**                                                     |
+| ----------------- | ------------------------------------------------------------ |
+| e-mail            | 在提交表单时，会自动验证值是否符合 e-mail 格式要求           |
+| url               | 在提交表单时，会自动验证值是否符合 url 格式要求              |
+| number            | 在提交表单时，会自动验证值是否为数字，并可以配合 min、max 以及 step 属性进行数值的限定 |
+| range             | 在提交表单时，会自动验证值是否在指定的范围内的数字，使用配合 min、max 以及 step 属性进行数值的限定，显示为滑动条 |
+| date              | 用于选取年、月、日                                           |
 
 控制字符数量
 
@@ -2835,3 +2841,165 @@ $(function() {
 | [attribute$=value]                 | 选取属性值以 value 结束的所有元素，如 `$('a[href$=".zip"]')` 表示获取所有包含 href 属性，且属性值以 .zip 结尾的` <a>` 元素 | 元素集合 |
 | [attribute*=value]                 | 选 取 属 性 值 中 包 含 value 的 所 有 元 素， 如 `$('a[href*="jquery.com"]')` 表示获取所有包含 href 属性且属性值中包含 jquery.com的 `<a>` 元素 | 元素集合 |
 | `[selector1][selector2]…[selectorN]` | 合并多个选择器，满足多个条件，每选择一次将缩小一次范围，如 `$('li[id][title^=test]')` 选取所有拥有属性 id 且属性 title 以 test开头的 `<li>` 元素 | 元素集合 |
+
+**使用属性过滤选择器锁定 DOM 元素，全选筛选框**
+
+```html
+<script type="text/javascript">
+    $(function() {// 页面加载事件
+        $("input[type='button']").click(function() {
+            $("input[name='songs']").attr("checked","checked");
+        });
+    });
+</script>
+<p>
+    请选择喜欢的歌曲：<br/>
+    <input type="checkbox" name="songs"/> 小幸运
+    <input type="checkbox" name="songs"/> 非酋
+    <input type="checkbox" name="songs"/> 佛系少女
+    <input type="checkbox" name="songs"/> 醉赤壁
+</p>
+<input type="button" value=" 全选 "/>
+```
+
+![img](https://img-blog.csdnimg.cn/20201111222535716.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg5MzkwMg==,size_16,color_FFFFFF,t_70)
+
+### 层次选择器
+
+层次选择器通过 DOM 元素之间的层次关系获取元素，其主要的层次关系包括后代、父子、相邻和兄弟关系。层次选择器由两个选择器组合而成
+
+| 名称           | 语法                | 功能                                              | 返回值                                                       |
+| -------------- | ------------------- | ------------------------------------------------- | ------------------------------------------------------------ |
+| 后代选择器     | selector1 selector2 | 从 selector1 的后代元素里选取 selector2           | 元素集合，如 $(“#nav span”) 表示选取 #nav下所有的<span>元素  |
+| 子选择器       | selector1>selector2 | 从 selector1 的子元素里选取 selector2             | 元素集合，如("#nav>span")表示选取 #nav 的子元素<span>        |
+| 相邻元素选择器 | selector1+selector2 | 从 selector1 后面的第一个兄弟元素里选取 selector2 | 元素集合，如 $("h2+dl") 表示选取紧邻<h2>元素之后的同辈元素 <dl> |
+| 同辈元素选择器 | selector1~selector2 | 从 selector1 后面的所有兄弟元素里选取 selector2   | 元 素 集 合， 如 $("h2~dl") 表 示 选 取<h2> 元素之后所有的同辈元素<dl> |
+
+> - selector1 selector2 与 selector1>selector2 所选择的元素集合是不同的，前者的层次关系是祖先与后代，而后者是父子关系
+>
+> - selector1+selector2 可以使用 jQuery 对象的 next() 方法代替
+>
+> - selector1~selector2 从 selector1 后面的所有兄弟元素里选取 selector2，不能获取前面部分，可以使用nextAll() 方法代替。而 siblings() 方法获取全部的相邻元素，不分前后
+>
+> - selector1 selector2 与 selector1:has(selector2) 虽然这两个选择器都要求 selector2 是 selector1 的后代元素，但是前者最终选取的是后代元素，后者最终选取的是拥有这些后代元素的元素
+
+**使用层次选择器锁定 DOM 元素**
+
+```html
+<script type="text/javascript">
+    $(function() {// 页面加载完毕事件
+        // 设置标题的颜色
+        $(":header").css("color","red");
+        // 设置第一层无序列表的字体颜色
+        $(":header+ul>li").css("color","green");
+        // 设置第二层无序列表的字体颜色
+        $(":header+ul>li>ul>li").css("color","blue");
+    });
+</script>
+html代码略
+```
+
+![img](https://img-blog.csdnimg.cn/20201111223049851.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg5MzkwMg==,size_16,color_FFFFFF,t_70)
+
+### 表单选择器
+
+| 选择器    | 功能                                                   | 返回值   |
+| --------- | ------------------------------------------------------ | -------- |
+| :input    | 获取 <input><textarea><select><button> 元素            | 元素集合 |
+| :text     | 获取符合 [type=text] 的 <input> 元素                   | 元素集合 |
+| :password | 获取符合 [type=password] 的 <input> 元素               | 元素集合 |
+| :radio    | 获取符合 [type=radio] 的 <input> 元素                  | 元素集合 |
+| :checkbox | 获取符合 [type=checkbox] 的 <input> 元素               | 元素集合 |
+| :image    | 获取符合 [type=image] 的 <input> 元素                  | 元素集合 |
+| :file     | 获取符合 [type=file] 的 <input> 元素                   | 元素集合 |
+| :hidden   | 参考“可见性过滤选择器”                                 | 元素集合 |
+| :button   | 获取 <button> 元素和符合 [type=button] 的 <input> 元素 | 元素集合 |
+| :submit   | 获取符合 [type=submit] 的 <input> 元素                 | 元素集合 |
+| :reset    | 获取符合 [type=reset] 的 <input> 元素                  | 元素集合 |
+
+**表单对象属性过滤选择器**
+
+表单对象属性过滤选择器也是专门针对表单元素的选择器，它属于过滤选择器的范畴，可以附加在其他选择器的后面，主要功能是对所选择的表单元素进行过滤
+
+| 选择器    | 功能                       |
+| --------- | -------------------------- |
+| :enabled  | 选取可用的表单元素         |
+| :disabled | 选取不可用的表单元素       |
+| :checked  | 选取被选中的 <input> 元素  |
+| :selected | 选取被选中的 <option> 元素 |
+
+ **示例：使用表单选择器和表单对象属性过滤选择器锁定 DOM 元素**
+
+```javascript
+$(function() {// 页面加载完毕事件
+    $("#pa :button").click(function() {
+        // 选择器 #pa 后的空格表示获取后代元素
+        $("#pa :text:enabled").css("border","1px solid red");
+    });
+    $("#pb :button").click(function() {
+        $("#pb :radio:checked").parent().css("background-color","#63c");
+    });
+    $("#pc :button").click(function() {
+        $("#pc :checkbox:checked").parent().css("background-color","#63c");
+    });
+    $("#pd :button").click(function() {
+        var info = " 你最喜欢的球星是："
+        info += $("#pd :input option:selected").val();
+        alert(info);
+    }); 
+});
+```
+
+![img](https://img-blog.csdnimg.cn/20201111223208835.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg5MzkwMg==,size_16,color_FFFFFF,t_70)
+
+### DOM 对象
+
+通过传统的 JavaScript 方法访问 DOM 中的元素，可生成 DOM 对象。如：
+
+```javascript
+ var obj=document.getElementById("content")
+```
+
+> 使用JavaScript中的getElementById ()方法，在文档中选择id="content"的匹配元素，最后将生成的DOM对象储存在obj变量中
+
+### jQuery 对象
+
+使用 jQuery 选择器选择页面中的元素，是为了生成 jQuery 对象，jQuery 对象具有特有的方法和属性，完全能够实现传统 DOM 对象的所有功能
+
+**使用jQuery操作元素**
+
+- 使用选择器获取某个元素
+- 使用jQuery对象的方法操作元素
+
+##### jQuery 对象和 DOM 对象的相互转换
+
+**jQuery 对象转换成 DOM 对象**
+
+- 使用 jQuery 中的 get() 方法，其语法结构为：get([index])
+- 如果get()方法不带参数，get()方法会返回所有匹配元素的DOM对象，并将它们包含在一个数组中
+
+**DOM 对象转换成 jQuery 对象**
+
+- 对于一个 DOM 对象，只需要用 $() 将它包装起来就可以获得对应的 jQuery 对象，其语法结构为：$(DOM 对象 )
+- 示例：使用 DOM 对象更改页面中文本字体的颜色
+
+```html
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $("h3").click(function() {
+            this.style.color="red";//DOM 对象
+        });
+    });
+</script>
+<body>
+    <h3> 全部商品分类 </h3>
+</body>
+```
+
+![img](https://img-blog.csdnimg.cn/20201112111930307.png)
+
+### jQuery 中使用 DOM 操作元素
+
+##### 元素样式的操作
+
