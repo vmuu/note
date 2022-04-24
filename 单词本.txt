@@ -1,5 +1,5 @@
-Component
-Brand
+component
+brand
 application
 properties
 beans
@@ -27,7 +27,7 @@ arguments
 alert
 prompt
 confirm
-tortoiseGit
+tortoise
 recent
 pushes
 minutes
