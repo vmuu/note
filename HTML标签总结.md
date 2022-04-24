@@ -1,4 +1,6 @@
-# HTML5标签
+# HTML基础
+
+### HTML5标签
 
 ##### doctype 标签
 
@@ -3458,3 +3460,334 @@ jQuery 对象.each(callback);
 ### jQuery动画与特效
 
 ##### 显示隐藏动画效果
+
+`show()` 法能动态地改变当前元素的高度、宽度和不透明度，最终显示当前元素
+
+`hide()` 方法会动态地改变当前元素的高度、宽度和不透明度，最终隐藏当前元素
+
+```javascript
+jQuery 对象.show(duration,[fn]);
+```
+
+```javascript
+jQuery 对象.hide(duration,[fn]);
+```
+
+参数duration 表示动画效果运行的时间，可以使用关键字slow、normal 和fast，分别对应时间长度0.6 秒、0.4秒和0.2 秒。当不设置值时，表示立即显示/隐藏元素
+
+可选参数fn 为在动画完成时执行的函数
+
+示例：使用 show() 方法与hide() 方法以动画的方式显示和隐藏图片
+
+```html
+<script type="text/javascript">
+  $(function(){
+    $("#btn").click(function() {
+	if($(this).val()==" 显示") {
+	     $("#pic").show("slow",function() {
+	     	$(this).css({"border":"1px solid red","padding":"5px"});
+        	     });
+             	     $(this).val("隐藏");
+	} else {
+	     $("#pic").hide("slow");
+	     $(this).val("显示");	}});});
+</script>
+```
+
+![img](https://img-blog.csdnimg.cn/20201112164750438.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg5MzkwMg==,size_16,color_FFFFFF,t_70)
+
+
+
+`toggle()方法`
+
+toggle() 方法会动态地改变当前元素的高度、宽度和不透明度，最终切换当前元素的可见状态
+
+如果元素是可见的，则切换为隐藏状态；如果元素是隐藏的，则切换为可见状态
+
+```javascript
+jQuery 对象.toggle(duration,[fn]);
+```
+
+示例：制作可伸缩的垂直菜单的操作
+
+```html
+<style>
+    //其他样式代码略
+    ul li.down{
+        background-image:url(../img/down.jpg);
+    }
+</style>
+```
+
+![img](https://img-blog.csdnimg.cn/20201112164904912.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg5MzkwMg==,size_16,color_FFFFFF,t_70)
+
+![img](https://img-blog.csdnimg.cn/20201112164909191.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg5MzkwMg==,size_16,color_FFFFFF,t_70)
+
+##### 淡入淡出动画效果
+
+`fadeIn()` 方法可以动态地改变当前元素的透明度（其他不变），实现淡入的动画效果，最终显示当前元素
+
+`fadeOut()` 方法可以动态地改变当前元素的透明度（其他不变），实现淡出的动画效果，最终隐藏当前元素
+
+```javascript
+jQuery 对象.fadeIn(duration,[fn]); 
+```
+
+```javascript
+jQuery 对象.fadeOut(duration,[fn]);
+```
+
+
+
+示例：使用 fadeIn() 方法与fadeOut() 方法以淡入淡出的方式显示和隐藏图片
+
+```html
+<script type="text/javascript">
+  $(function(){
+    $("#btn").click(function() {
+	if($(this).val()==“淡入") {
+	     $("#pic").fadeIn("slow",function() {
+	     	$(this).css({"border":"1px solid red","padding":"5px"});
+        	     });
+             	     $(this).val(“淡入");
+	} else {
+	     $("#pic").fadeOut("slow");
+	     $(this).val(“淡出");	
+    }
+    });
+  });
+</script>
+```
+
+![img](https://img-blog.csdnimg.cn/20201112165135815.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg5MzkwMg==,size_16,color_FFFFFF,t_70)
+
+`fadeToggle()方法`
+
+fadeToggle() 方法会动态地改变当前元素的透明度，最终切换当前元素的可见状态
+
+如果元素是可见的，则通过淡出效果切换为隐藏状态；如果元素是隐藏的，则通过淡入效果切换为可见状态
+
+```javascript
+jQuery 对象.fadeToggle(duration,[fn]);
+```
+
+示例：使用fadeToggle()方法实现后三项商品类型的动画效果在淡出和淡入之间切换
+
+```html
+<style>
+     //其他样式代码略
+     ul li.down{
+	background-image:url(../img/down.jpg);
+     }
+</style>
+<script type="text/javascript">
+    $(function(){
+        $("#menu li.lastItem").click(function() {
+	     // 切换菜单
+	     $("#menu li:gt(5):not(:last)").fadeToggle();
+	     // 更换底部箭头方向
+	     $(this).toggleClass("down");
+         });
+    });
+</script>
+```
+
+`fadeTo() 方法`
+
+fadeTo() 方法可以改变元素的透明度到指定某一个值
+
+```javascript
+fadeTo() 方法可以改变元素的透明度到指定某一个值
+```
+
+> 参数duration 为动画效果的速度，使用方式与hide()、show() 等方法一致
+>
+> 参数opacity 用于指定不透明值，取值范围是0 ～ 1（0 代表完全透明，1 代表完全不透明）
+
+示例：使用fadeTo ()方法改变图片的透明度
+
+```html
+<script type="text/javascript">
+    $(function(){
+        $("#sel").change(function() {
+	     var opacity = $(this).val();
+	     $("img").fadeTo(3000,opacity);
+	}); 
+      });
+</script>
+```
+
+![img](https://img-blog.csdnimg.cn/20201112165548997.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg5MzkwMg==,size_16,color_FFFFFF,t_70)
+
+##### 滑入滑出动画效果
+
+**slideDown()** 方法会动态地改变当前元素的高度（其他不变），由上到下滑入，即高度向下增大，使其呈现出一种“滑动”的效果，直至最终显示当前元素
+
+**slideUp()** 方法会动态地改变当前元素的高度（其他不变），由下到上滑出，即高度向上减小，直至最终隐藏当前元素
+
+```javascript
+jQuery 对象.slideDown(duration,[fn]);
+```
+
+```javascript
+jQuery 对象.slideUp(duration,[fn]);
+```
+
+示例：制作图书销售网站中“我的书库”菜单的二级菜单滑入滑出的动画效果
+
+```html
+<script type="text/javascript">
+  $(function(){
+       $(".secondLi").hover(function() {
+         $(".secondLi ul").slideDown(2000);
+     },function(){
+         $(".secondLi ul").slideUp(2000);
+     });
+    });
+</script>
+html和css代码略
+```
+
+![img](https://img-blog.csdnimg.cn/20201112165759158.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg5MzkwMg==,size_16,color_FFFFFF,t_70)
+
+![img](https://img-blog.csdnimg.cn/20201112165801992.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg5MzkwMg==,size_16,color_FFFFFF,t_70)
+
+`slideToggle()方法`
+
+slideToggle() 方法会动态地改变当前元素的高度（其他不变），最终切换当前元素的可见状态
+
+如果元素是可见的，则通过滑出效果切换为隐藏状态；如果元素是隐藏的，则通过滑入效果切换为可见状态
+
+```javascript
+jQuery 对象.slideToggle(duration,[fn]);
+```
+
+示例：使用slideToggle()方法实现二级菜单滑入滑出的动画效果
+
+```html
+<script type="text/javascript">
+  $(function(){
+       $(".secondLi").click(function() {
+         $(".secondLi ul").slideToggle(2000); 
+     });
+    });
+</script>
+html和css代码略
+```
+
+##### 自定义动画
+
+简单的动画
+
+animate() 方法可以动态地改变当前元素的各种 CSS 属性
+
+```javascript
+jQuery 对象.animate(properties,[duration],[fn]);
+```
+
+> 参数 properties 使用一个“名：值”形式的对象来设置需要改变的 CSS 属性。
+>
+> animate() 方法只能改变可以取数字值的 CSS 属性，如宽高，边框粗细，内外边距，元素位置，字体大小，字体间距，背景定位和透明度。
+
+示例：animate() 方法实现图片的放大显示
+
+```javascript
+<script type="text/javascript">
+   $(function() {
+      $("img").click(function() {
+        $(this).animate({width:"180px",height:"180px"},"slow");
+      });
+   });
+</script>
+<body>
+     <img src="../img/tmac.jpg"/>
+</body>
+```
+
+![img](https://img-blog.csdnimg.cn/20201112170048111.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg5MzkwMg==,size_16,color_FFFFFF,t_70)
+
+![img](https://img-blog.csdnimg.cn/20201112170051110.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg5MzkwMg==,size_16,color_FFFFFF,t_70)
+
+移动位置的动画
+
+通过 animate() 方法，不仅可以利用动画效果增加元素的长度和宽度，还能够利用动画效果改变元素在页面中的位置
+
+示例：使用 animate() 方法改变页面元素的位置
+
+```html
+<script type="text/javascript">
+   $(function() {
+      $("img").click(function() {
+	    //属性值前可以加上 "+=" 或 "-=" 运算符号，表示在原先属性值上累加或累减
+         $(this).animate({left:"+=100px",top:"+=100px",opacity:0.5},3000);
+      });
+   });
+</script>
+<body>
+     <img src="../img/tmac.jpg"/>
+</body>
+```
+
+![img](https://img-blog.csdnimg.cn/20201112170123614.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg5MzkwMg==,size_16,color_FFFFFF,t_70)
+
+队列中的动画
+
+所谓“队列”动画，是指在元素中执行一个以上的多个动画效果，即有多个 animate() 方法在元素中执行
+
+根据这些 animate() 方法执行的先后顺序，形成了动画“队列”，产生“队列”后，动画的效果便按“队列”的顺序进行展示
+
+示例：演示队列中动画的使用
+
+```html
+<script type="text/javascript">
+   $(function() {
+      //<div> 元素点击事件
+      $("div").click(function() {
+        $(this).animate({height:100},"slow");  // 第 1 列
+        $(this).animate({width:100},"slow");  // 第 2 列
+          $(this).animate({height:50},"slow");   // 第 3 列
+        $(this).animate({width:50},"slow");   // 第 4 列
+   });
+</script>
+<body>
+     <div> 队列中的动画 </div>
+</body>
+```
+
+![img](https://img-blog.csdnimg.cn/20201112170206146.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg5MzkwMg==,size_16,color_FFFFFF,t_70)
+
+动画停止
+
+stop() 方法能够结束当前的动画，并立即进入到下一个动画
+
+```javascript
+jQuery 对象.stop([clearQueue],[gotoEnd]);
+```
+
+> 不带任何参数的 stop() 方法，则会立即停止当前正在执行的动画，如果后面还有动画要继续，则以当前状态开始接下来的动画
+>
+> learQueue 参数表示是否清空未执行完的动画队列，gotoEnd 参数表示是否立即完成正在执行的动画
+
+示例：避免当用户光标进入或移出的速度太快，导致移入移出与对应的动画不一致
+
+```html
+<script type="text/javascript">
+  $(function(){
+       $(".secondLi").hover(function() {
+         $(".secondLi ul").stop().slideDown(2000);
+     },function(){
+         $(".secondLi ul").stop().slideUp(2000);
+     });
+    });
+</script>
+html和css代码略
+```
+
+
+
+
+
+# Vue.js
+
+### 
+
