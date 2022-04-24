@@ -1,3 +1,6 @@
+jquery
+everything
+
 component
 brand
 application

@@ -1,14 +1,12 @@
-# HTML5基础标签
-
-### HTML5标签
+# HTML5标签
 
 ##### doctype 标签
 
 | **HTML** **版本** | **doctype** **声明**                                         |
 | ----------------- | ------------------------------------------------------------ |
 | HTML5             | <!doctype html>                                              |
-| XHTML1.0          | <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> |
-| HTML4.0           | <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> |
+| XHTML1.0          | `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">` |
+| HTML4.0           | `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">` |
 
 ##### html标签
 
@@ -268,15 +266,15 @@
 
 ### 表单标签
 
-| **表单控件标签写法**    | **说明**                                           |
-| ----------------------- | -------------------------------------------------- |
-| <input type="text">     | 单行文本输入框。使用的是 input 标签和 type 属性    |
-| <input type="submit">   | 将表单中的信息提交给表单中 action 属性所指向的地址 |
-| <input type="checkbox"> | 复选框                                             |
-| <input type="radio">    | 单选钮                                             |
-| <input type="password"> | 密码输入框（输入的文字用 * 表示）                  |
-| <select>                | 下拉框                                             |
-| <textArea>              | 多行文本输入框                                     |
+| **表单控件标签写法**      | **说明**                                           |
+| ------------------------- | -------------------------------------------------- |
+| `<input type="text">`     | 单行文本输入框。使用的是 input 标签和 type 属性    |
+| `<input type="submit">`   | 将表单中的信息提交给表单中 action 属性所指向的地址 |
+| `<input type="checkbox">` | 复选框                                             |
+| `<input type="radio">`    | 单选钮                                             |
+| `<input type="password">` | 密码输入框（输入的文字用 * 表示）                  |
+| `<select>`                | 下拉框                                             |
+| `<textArea>`              | 多行文本输入框                                     |
 
 ```html
 <form name="表单名字" action="URL" method="get/post">
@@ -648,11 +646,11 @@ CSS Sprites
 background: linear-gradient(<angle> || <direction>,< color_stop>, <color_stop>...);
 ```
 
-| **取值**     | **说明**                                                     |
-| ------------ | ------------------------------------------------------------ |
-| <angle>      | 通过角度来确定渐变的方向。角度是指水平线和渐变线之间的角度，逆时针方向计算。 |
-| <direction>  | 通过代表方向的关键词来确定渐变的方向。                       |
-| <color_stop> | 用于指定终止色，其中可以设置多个终止色，用于实现多种颜色之间的渐变。 |
+| **取值**       | **说明**                                                     |
+| -------------- | ------------------------------------------------------------ |
+| `<angle>`      | 通过角度来确定渐变的方向。角度是指水平线和渐变线之间的角度，逆时针方向计算。 |
+| `<direction>`  | 通过代表方向的关键词来确定渐变的方向。                       |
+| `<color_stop>` | 用于指定终止色，其中可以设置多个终止色，用于实现多种颜色之间的渐变。 |
 
 径向渐变
 
@@ -660,12 +658,12 @@ background: linear-gradient(<angle> || <direction>,< color_stop>, <color_stop>..
 background: radial-gradient (<shape> || <size> at <position>, <color_stop>, ...);
 ```
 
-| **取值**     | **说明**                                                     |
-| ------------ | ------------------------------------------------------------ |
-| <position>   | 主要用来定义径向渐变的圆心位置。                             |
-| <shape>      | 主要用来定义径向渐变的形状。包括两个值“circle”（圆形）和“ellipse”（椭圆形）。 |
-| <size>       | 主要用于设置渐变半径的大小，从而用来确定径向渐变的结束形状大小。可以设置数值、百分比以及关键字。 |
-| <color_stop> | 径向渐变线上的终止色                                         |
+| **取值**       | **说明**                                                     |
+| -------------- | ------------------------------------------------------------ |
+| `<position>`   | 主要用来定义径向渐变的圆心位置。                             |
+| `<shape>`      | 主要用来定义径向渐变的形状。包括两个值“circle”（圆形）和“ellipse”（椭圆形）。 |
+| `<size>`       | 主要用于设置渐变半径的大小，从而用来确定径向渐变的结束形状大小。可以设置数值、百分比以及关键字。 |
+| `<color_stop>` | 径向渐变线上的终止色                                         |
 
 ##### 阴影属性
 
@@ -2377,7 +2375,17 @@ JavaScript 中的基本数值运算符可以用来进行一些简单的数学计
 
 **Math对象中常用的方法**
 
-
+| 方法                      | 功能                                              |
+| ------------------------- | ------------------------------------------------- |
+| Math.abs(number)          | 返回number 的绝对值                               |
+| Math.ceil(number)         | 对number 向上取整，如Math.ceil(67.6) 返回值是68   |
+| Math.floor(number)        | 对number 向下取整，如Math.floor (67.6) 返回值是67 |
+| Math.max(number1,number2) | 返回number1 与number2 中的较大值                  |
+| Math.min(number1,number2) | 返回number1 与number2 中的较小值                  |
+| Math.pow(x,y)             | 返回x 的y 次幂                                    |
+| Math.random()             | 返回0 和1 之间的伪随机数，可能为0，但总是小于1    |
+| Math.round(number)        | 返回最接近number 的整数                           |
+| Math.sqrt(number)         | number 的平方根                                   |
 
 示例：使用Math对象，完成一个猜数游戏
 
@@ -2415,7 +2423,7 @@ var arr=["happy",12,45.6];
 
 > - 每个数组变量都有一个length属性，表示该数组中元素的个数
 >
-> - 定义一个数组变量后，就可以使用“数组变量名[索引号]”的格式来访问每个数组元素
+> - 定义一个数组变量后，就可以使用“`数组变量名[索引号]`”的格式来访问每个数组元素
 >
 > - 数组列表中的第一个元素的索引号为0，其后的每个元素的索引号依次递增，最后的元素索引为数组的长度-1
 >
@@ -2735,9 +2743,9 @@ for (变量 in 对象){
 | :not(selector)    | 获取除给定选择器之外的所有元素               | 元 素 集 合， 如$("li:not(.title)") 获 取class 不是 title 的 <li> 元素 |
 | :even             | 获取索引值为偶数的元素，索引号从 0 开始      | 元素集合                                                     |
 | :odd              | 将每一个选择器匹配到的元素合并后一起返回     | 元素集合                                                     |
-| :eq(index)        | 获取索引值等于 index 的元素，索引号从 0 开始 | 单个元素，如 $(“li:eq(1)”) 获取索引等于 1 的 <li> 元素       |
-| :gt(index)        | 获取索引值大于 index 的元素，索引号从 0 开始 | 元素集合，如 $("li:gt(1)") 获取索引大于但不包括 1 的 <li> 元素 |
-| :lt(index)        | 获取索引值小于 index 的元素，索引号从 0 开始 | 元素集合，如 $("li:lt(1)") 获取索引小于但不包括 1 的 <li> 元素 |
+| :eq(index)        | 获取索引值等于 index 的元素，索引号从 0 开始 | `单个元素，如 `$(“li:eq(1)”) `获取索引等于 1 的 <li> `元素   |
+| :gt(index)        | 获取索引值大于 index 的元素，索引号从 0 开始 | 元素集合，如 `$("li:gt(1)")` 获取索引大于但不包括 1 的 `<li> `元素 |
+| :lt(index)        | 获取索引值小于 index 的元素，索引号从 0 开始 | 元素集合，如 `$("li:lt(1)")` 获取索引小于但不包括 1 的 `<li>` 元素 |
 | :header           | 获取所有标题元素，如 h1~h6                   | 元素集合                                                     |
 | :animated         | 获取正在执行动画效果的元素                   | 元素集合                                                     |
 
@@ -2801,10 +2809,10 @@ $(function() {
 
 > 可见性过滤选择器根据元素是否可见的特征来获取元素
 
-| 选择器   | 功能           | 返回值                                        |
-| -------- | -------------- | --------------------------------------------- |
-| :hidden  | 选取不可见元素 | 元素集合，如 $(":hidden") 选取所有隐藏的元素  |
-| :visible | 选取可见元素   | 元素集合，如 $(":visible") 选取所有可见的元素 |
+| 选择器   | 功能           | 返回值                                          |
+| -------- | -------------- | ----------------------------------------------- |
+| :hidden  | 选取不可见元素 | 元素集合，如 `$(":hidden") `选取所有隐藏的元素  |
+| :visible | 选取可见元素   | 元素集合，如 `$(":visible")` 选取所有可见的元素 |
 
 > 不可见元素包括：css 样式中 display 属性值为 none 的元素、type 属性值为 hidden 的 <input> 元素及宽高设置为 0 的元素
 
@@ -2870,10 +2878,10 @@ $(function() {
 
 | 名称           | 语法                | 功能                                              | 返回值                                                       |
 | -------------- | ------------------- | ------------------------------------------------- | ------------------------------------------------------------ |
-| 后代选择器     | selector1 selector2 | 从 selector1 的后代元素里选取 selector2           | 元素集合，如 $(“#nav span”) 表示选取 #nav下所有的<span>元素  |
-| 子选择器       | selector1>selector2 | 从 selector1 的子元素里选取 selector2             | 元素集合，如("#nav>span")表示选取 #nav 的子元素<span>        |
-| 相邻元素选择器 | selector1+selector2 | 从 selector1 后面的第一个兄弟元素里选取 selector2 | 元素集合，如 $("h2+dl") 表示选取紧邻<h2>元素之后的同辈元素 <dl> |
-| 同辈元素选择器 | selector1~selector2 | 从 selector1 后面的所有兄弟元素里选取 selector2   | 元 素 集 合， 如 $("h2~dl") 表 示 选 取<h2> 元素之后所有的同辈元素<dl> |
+| 后代选择器     | selector1 selector2 | 从 selector1 的后代元素里选取 selector2           | 元素集合，如 `$(“#nav span”)` 表示选取 #nav下所有的`<span>`元素 |
+| 子选择器       | selector1>selector2 | 从 selector1 的子元素里选取 selector2             | 元素集合，如`("#nav>span")`表示选取 #nav 的子元素`<span>`    |
+| 相邻元素选择器 | selector1+selector2 | 从 selector1 后面的第一个兄弟元素里选取 selector2 | 元素集合，如 `$("h2+dl") `表示选取紧邻`<h2>`元素之后的同辈元素 `<dl>` |
+| 同辈元素选择器 | selector1~selector2 | 从 selector1 后面的所有兄弟元素里选取 selector2   | 元 素 集 合， 如 `$("h2~dl")` 表 示 选 取`<h2>` 元素之后所有的同辈元素`<dl>` |
 
 > - selector1 selector2 与 selector1>selector2 所选择的元素集合是不同的，前者的层次关系是祖先与后代，而后者是父子关系
 >
@@ -2903,30 +2911,30 @@ html代码略
 
 ### 表单选择器
 
-| 选择器    | 功能                                                   | 返回值   |
-| --------- | ------------------------------------------------------ | -------- |
-| :input    | 获取 <input><textarea><select><button> 元素            | 元素集合 |
-| :text     | 获取符合 [type=text] 的 <input> 元素                   | 元素集合 |
-| :password | 获取符合 [type=password] 的 <input> 元素               | 元素集合 |
-| :radio    | 获取符合 [type=radio] 的 <input> 元素                  | 元素集合 |
-| :checkbox | 获取符合 [type=checkbox] 的 <input> 元素               | 元素集合 |
-| :image    | 获取符合 [type=image] 的 <input> 元素                  | 元素集合 |
-| :file     | 获取符合 [type=file] 的 <input> 元素                   | 元素集合 |
-| :hidden   | 参考“可见性过滤选择器”                                 | 元素集合 |
-| :button   | 获取 <button> 元素和符合 [type=button] 的 <input> 元素 | 元素集合 |
-| :submit   | 获取符合 [type=submit] 的 <input> 元素                 | 元素集合 |
-| :reset    | 获取符合 [type=reset] 的 <input> 元素                  | 元素集合 |
+| 选择器    | 功能                                                       | 返回值   |
+| --------- | ---------------------------------------------------------- | -------- |
+| :input    | 获取 `<input><textarea><select><button>` 元素              | 元素集合 |
+| :text     | 获取符合 [type=text] 的`<input> `元素                      | 元素集合 |
+| :password | 获取符合 [type=password] 的 `<input>` 元素                 | 元素集合 |
+| :radio    | 获取符合 [type=radio] 的 `<input>` 元素                    | 元素集合 |
+| :checkbox | 获取符合 [type=checkbox] 的 `<input>` 元素                 | 元素集合 |
+| :image    | 获取符合 [type=image] 的 `<input>` 元素                    | 元素集合 |
+| :file     | 获取符合 [type=file] 的 `<input>` 元素                     | 元素集合 |
+| :hidden   | 参考“可见性过滤选择器”                                     | 元素集合 |
+| :button   | 获取 `<button>` 元素和符合 [type=button] 的 `<input>` 元素 | 元素集合 |
+| :submit   | 获取符合 [type=submit] 的 `<input>` 元素                   | 元素集合 |
+| :reset    | 获取符合 [type=reset] 的 `<input>` 元素                    | 元素集合 |
 
 **表单对象属性过滤选择器**
 
 表单对象属性过滤选择器也是专门针对表单元素的选择器，它属于过滤选择器的范畴，可以附加在其他选择器的后面，主要功能是对所选择的表单元素进行过滤
 
-| 选择器    | 功能                       |
-| --------- | -------------------------- |
-| :enabled  | 选取可用的表单元素         |
-| :disabled | 选取不可用的表单元素       |
-| :checked  | 选取被选中的 <input> 元素  |
-| :selected | 选取被选中的 <option> 元素 |
+| 选择器    | 功能                         |
+| --------- | ---------------------------- |
+| :enabled  | 选取可用的表单元素           |
+| :disabled | 选取不可用的表单元素         |
+| :checked  | 选取被选中的 `<input>`元素   |
+| :selected | 选取被选中的 `<option>` 元素 |
 
  **示例：使用表单选择器和表单对象属性过滤选择器锁定 DOM 元素**
 
@@ -3003,3 +3011,450 @@ $(function() {// 页面加载完毕事件
 
 ##### 元素样式的操作
 
+**1、直接设置元素样式值：在 jQuery 中，可以通过 css() 方法为某个指定的元素设置样式值**
+
+设置单个属性：
+
+```javascript
+jQuery 对象.css(name,value);  //其中name为样式名称，value为样式的值
+```
+
+
+同时设置多个属性：
+
+```javascript
+jQuery 对象.css({name:value,name:value,name:value…});
+```
+
+
+示例：在 jQuery 中使用 DOM 设置元素的样式值
+
+```html
+<script type="text/javascript">
+    $(function() {
+        $("#content").click(function() {
+            $(this).css("font-weight","bold");
+            $(this).css("font-style","italic");
+            $(this).css("background-color","#eee");
+        });
+    });
+</script>
+<body>
+    <p id="content">Write Less, Do More.</p>
+</body>
+```
+
+![img](https://img-blog.csdnimg.cn/20201112112239906.png)
+
+![img](https://img-blog.csdnimg.cn/20201112112243772.png)
+
+ **2、增加类：通过 jQuery 对象的 addClass() 方法增加元素类**
+
+增加单个类：
+
+```javascript
+ jQuery 对象.addClass(class);
+```
+
+同时增加多个类，以空格隔开类名：
+
+```javascript
+ jQuery 对象.addClass(class0 class1…);
+```
+
+**示例：在 jQuery 中使用 addClass(class) 方法，给<p>标签动态添加样式**
+
+```html
+<style type="text/css">
+    .cls1{
+      font-weight:bold;
+      font-style:italic;
+      background-color:#eee;
+    }
+</style>
+```
+
+```html
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+      $("#content").click(function() {
+        $(this).addClass("cls1");
+      });
+   });
+</script>
+<p id="content">Write Less, Do More.</p>
+```
+
+**3、删除类：与增加 css 类的 addClass() 方法相反，removeClass() 方法则用于删除类**
+
+```javascript
+jQuery 对象.removeClass([class]);
+```
+
+**示例：点击按钮后，删除添加的 `<p>` 标签样式类**
+
+```html
+<style type="text/css">
+    .cls1{
+      font-weight:bold;
+      font-style:italic;
+      background-color:#eee;
+    }
+</style>
+```
+
+![img](https://img-blog.csdnimg.cn/20201112112509169.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg5MzkwMg==,size_16,color_FFFFFF,t_70)
+
+![img](https://img-blog.csdnimg.cn/20201112112512520.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg5MzkwMg==,size_16,color_FFFFFF,t_70)
+
+**4、 类切换** toggleClass() 模拟了 addClass() 与 removeClass() 实现样式切换的过程 通过 toggleClass() 方法可以为元素切换不同的类
+
+```html
+jQuery 对象.toggleClass(class);
+```
+
+**示例：使用toggleClass(class) 方法，实现增加类样式和删除类样式的切换**
+
+```html
+<style type="text/css">
+    .cls1{
+      font-weight:bold;
+      font-style:italic;
+      background-color:#eee;
+    }
+</style>
+```
+
+```html
+<script type="text/javascript">
+    $(function() {
+	添加类样式的代码略
+      $("#content").click(function() {
+        $(this).toggleClass("cls1");
+      });
+   });
+</script>
+<p id="content">Write Less, Do More.</p>
+```
+
+##### 元素内容和值的操作
+
+**操作元素内容的方法包括 html() 和 text()**
+
+| 语法格式      | 参数说明                     | 功能描述                                     |
+| ------------- | ---------------------------- | -------------------------------------------- |
+| html()        | 无参数                       | 用于获取第一个匹配元素的 HTML 内容或文本内容 |
+| html(content) | content 参数为元素的HTML内容 | 用于设置所有匹配元素的 HTML 内容或文本内容   |
+| text()        | 无参数                       | 用于获取所有匹配元素的文本内容               |
+| text(content) | content 参数为元素的文本内容 | 用于设置所有匹配元素的文本内容               |
+
+**示例：在页面中点击“增加图像”按钮后，在 <p> 标签中增加一幅图像**
+
+```html
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+   $(function() {
+      $("input[type='button']").click(function() {
+        // 设置页面中所有 <p> 元素内部的 HTML 代码
+        $("p").html("<img src='../img/frozen.jpg'/>");
+      });
+   });
+</script>
+<body>
+       <p></p>
+     <input type="button" value=" 增加图像 "/>
+</body>
+```
+
+![img](https://img-blog.csdnimg.cn/20201112112723396.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg5MzkwMg==,size_16,color_FFFFFF,t_70)
+
+**获取或设置元素值：**要获取元素的值，可以通过 val() 方法来实现
+
+```html
+jQuery 对象.val([val]);
+```
+
+> 如果 val() 方法不带参数，表示获取某元素的值
+>
+> 如果 val() 方法带有参数，则表示将参数赋给指定的元素，即设置元素的值
+
+**示例：制作页面登录框水印特效**
+
+```html
+<script type="text/javascript">
+    $(function() {
+      $("#userEmail").focus(function(){    // 邮箱输入框获得焦点
+        var text_value = $(this).val();   // 获取当前文本框的值                	    if(text_value == "xxx@163.com") {
+           $(this).val(""); // 如果符合条件，则清空文本框内容
+        }
+      });
+      $("#userEmail").blur(function() {    // 邮箱输入框失去焦点
+        var text_value = $(this).val();  // 获取当前文本框的值
+        if(text_value=="") {
+            $(this).val("xxx@163.com"); } // 如果符合条件，则设置内容
+      });
+    });
+</script>
+```
+
+![img](https://img-blog.csdnimg.cn/20201112112918677.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg5MzkwMg==,size_16,color_FFFFFF,t_70)
+
+##### 元素属性的操作
+
+**1、获取或设置元素的属性值：**通过 attr() 方法可以获取或设置元素的属性值
+
+```javascript
+//获取属性值，参数name表示属性的名称
+jQuery 对象.attr(name); 
+//设置属性值，参数value表示属性的值
+jQuery 对象.attr(name,value);
+//同时设置多个属性
+jQuery 对象.attr({name0:value0,name1:value1…});
+//绑定函数，将函数返回值作为元素的属性值
+jQuery 对象.attr(name,function(index){});
+```
+
+**示例：在页面中创建一个 `<img>` 标签，当页面加载完毕后，随机展示图片**
+
+```html
+<script type="text/javascript">
+   $(function() {
+      var imgs = new Array();
+      imgs[0]="../img/img_1.jpg";
+      imgs[1]="../img/img_2.jpg";
+      imgs[2]="../img/img_3.jpg";
+      imgs[3]="../img/img_4.jpg";
+      $("img").attr("src",function(){
+        // 随机产生 0 到 3 之间的数，即随机产生数组的下标
+        var i = Math.ceil(Math.random()*3);
+        // 函数的返回值作为 src 的属性值
+        return imgs[i];});});
+</script>
+<body><img/></body>
+```
+
+![img](https://img-blog.csdnimg.cn/20201112113102383.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg5MzkwMg==,size_16,color_FFFFFF,t_70)
+
+**2、删除元素的属性** 可使用 removeAttr() 方法将元素的属性删除
+
+```javascript
+jQuery 对象.removeAttr(name);
+```
+
+### jQuery 中使用 DOM 操作节点
+
+##### 创建节点元素
+
+通过函数 $(html) 完成元素的创建
+
+调用新元素的上级或者同辈的相关方法，把新元素添加到 DOM 树中
+
+```javascript
+$(html);
+```
+
+##### 插入节点
+
+动态创建新元素后，需要执行插入或追加操作
+
+按照元素的层次关系来分，可以分为内部和外部两种方法
+
+**1、元素内部插入子节点**
+
+| 语法格式           | 功能描述                                                     |
+| ------------------ | ------------------------------------------------------------ |
+| append(content)    | $(A).append(B) 表示将 B 追加到 A 中，如 $("ul").append($li); |
+| appendTo(content)  | $(A).appendTo(B) 表示把 A 追加到 B 中，如 $li.appendTo("ul") |
+| prepend(content)   | $(A).prepend(B) 表示将 B 前置插入到 A 中，如 $("ul").prepend($li) |
+| prependTo(content) | $(A).prependTo(B) 表示将 A 前置插入到 B 中，如 $li.prependTo("ul") |
+
+**示例：在页面的文本框中输入流行的歌曲名和歌手后，将其添加到列表的最前面**
+
+```html
+<script type="text/javascript">
+   $(function() {
+      $("#song").blur(function() {
+        // 输入框中的内容不为空
+        if($(this).val()!="") {
+          // 创建 li 节点，节点的文本内容是在文本框中输入的
+          var $li=$("<li>"+$(this).val()+"</li>");
+          // 将 $li 对象前置插入到 <ul> 元素中
+          $li.prependTo($("ul"));
+          // 清空输入框中的内容
+          $(this).val("");
+        }
+      });
+     });
+</script>
+```
+
+![img](https://img-blog.csdnimg.cn/20201112113458827.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg5MzkwMg==,size_16,color_FFFFFF,t_70)
+
+**2、元素外部插入同辈节点**
+
+| 语法格式              | 功能描述                                                     |
+| --------------------- | ------------------------------------------------------------ |
+| after(content)        | $(A).after(B) 表示将 B 插入到 A 之后，如 $("ul").after($div); |
+| insertAfter(content)  | $(A).insertAfter(B) 表示将 A 插入到 B 之后，如 $div.insertAfter("ul") |
+| before(content)       | $(A).before(B) 表示将 B 插入至 A 之前，如 $("ul").before($div) |
+| insertBefore(content) | $(A).insertBefore(B) 表示将 A 插入到 B 之前，如 $div.insertBefore("ul") |
+
+**示例：在页面中点击“流行歌曲”标题，自动添加歌曲列表项**
+
+```html
+<script type="text/javascript">
+   $(function() {
+      $("h3").click(function() {
+        var $ul=$("<ul></ul>");
+        var $li1=$("<li> 想起————韩雪 </li>");
+        var $li2=$("<li> 没那么简单————黄小琥 </li>");
+        var $li3=$("<li> 指望————郁可唯 </li>");
+        // 将创建的 <ul> 元素作为 <h3> 元素的同辈元素，插入到 <h3> 元素之后
+        $(this).after($ul);
+        $ul.append($li1); // 追加 $ul 对象的子节点
+        $ul.append($li2);
+        $ul.append($li3); });});
+</script>
+<body> <h3> 流行歌曲 </h3> </body>
+```
+
+![img](https://img-blog.csdnimg.cn/20201112113553676.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg5MzkwMg==,size_16,color_FFFFFF,t_70)
+
+##### 替换节点
+
+在 jQuery 中，如果要替换元素中的节点，可以使用 replaceWith() 和 replaceAll() 这两种方法
+
+```javascript
+jQuery 对象.replaceWith(content);
+jQuery 对象.replaceAll(selector);
+```
+
+**replaceWith()** 方法的功能是将所有选择的元素替换成指定的 HTML 页面元素
+
+**replaceAll()** 方法的功能是用所选择的元素替换指定的 <selector> 元素
+
+**示例：在页面中点击“替换”按钮，将歌曲列表中的最后一首歌曲替换成其他歌曲**
+
+```javascript
+<script type="text/javascript">
+   $(function() {
+      $("input[type='button']").click(function() {
+        var $li = $("<li> 也许明天————姚贝娜 </li>");
+        $("ul li:last").replaceWith($li);
+      });
+     });
+</script>
+```
+
+```html
+<body> <h3> 流行歌曲 </h3> 
+       <ul>
+    	<li> 想起————韩雪 </li>
+    	<li> 没那么简单————黄小琥 </li>
+    	<li> 指望————郁可唯 </li>
+     </ul>
+     <input type="button" value=" 替换 "/>
+</body>
+```
+
+![img](https://img-blog.csdnimg.cn/20201112113728581.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg5MzkwMg==,size_16,color_FFFFFF,t_70)
+
+##### 复制节点
+
+在页面中，有时候需要复制某个元素节点。可以通过 clone() 方法实现功能
+
+```javascript
+jQuery 对象.clone();
+```
+
+> 该方法只是复制元素本身，被复制后的新元素不具有任何元素行为。如果需要将该元素的全部行为也进行复制，那么可以通过 clone(true) 实现
+
+**示例：在页面中插入一幅图片，当点击此图片时，将其复制并粘贴在右侧**
+
+```html
+<script type="text/javascript">
+   $(function() {
+      $("img").click(function() {
+        $(this).clone(true).appendTo($("#p1"));
+      });
+     });
+</script>
+<body> 
+       <p id="p1">
+    	<img src="../img/img_2.jpg"/>
+     </p>
+</body>
+```
+
+![img](https://img-blog.csdnimg.cn/20201112113853509.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg5MzkwMg==,size_16,color_FFFFFF,t_70)
+
+##### 删除节点
+
+在操作页面时，删除多余的或指定的页面元素是非常必要的。jQuery 中提供了 remove() 方法来删除元素
+
+```javascript
+jQuery 对象.remove([expr]);
+```
+
+> 其中参数 expr 为可选项，该参数为筛选元素的 jQuery 表达式，通过该表达式将获取指定的元素，并进行删除
+
+**示例：在页面中插入无序列表和按钮，点击按钮时，将无序列表最后一项删除**
+
+```html
+<script type="text/javascript">
+   $(function() {
+      $("input[type='button']").click(function() {
+        //$("ul li").remove();     // 删除所有的列表项
+        $("ul li").remove("ul li:last"); // 删除最后一项
+      });
+     });
+</script>
+```
+
+```html
+<body<h3> 流行歌曲：</h3>
+    <ul>
+    	<li> 一个像夏天一个像秋天————范玮琪 </li>
+    	<li> 想起————韩雪 </li>
+    	<li> 没那么简单————黄小琥 </li>
+    	<li> 指望———郁可唯 </li>
+    </ul>
+  <input type="button" value=" 删除 "/></body>
+```
+
+![img](https://img-blog.csdnimg.cn/2020111211400918.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg5MzkwMg==,size_16,color_FFFFFF,t_70)![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
+
+##### 遍历元素
+
+jQuery 中元素的遍历
+
+在 jQuery 中，可以直接使用 each() 方法实现元素的遍历
+
+```javascript
+jQuery 对象.each(callback);
+```
+
+> 参数 callback 是一个function函数，可以给该函数传递一个index参数，此形参是遍历元素的序号。如果需要在函数体中访问当前遍历到的元素，可以使用 this 关键字
+
+**示例：点击“添加边框”按钮后，给页面图片添加边框并设置其 title 属性**
+
+```html
+<script type="text/javascript">
+   $(function() {// 页面加载完毕事件
+      $("input[type='button']").click(function() {
+        $("img").each(function(index, element) {
+          //jQuery 对象
+          //$(this).css("border","2px solid red");
+          //$(this).attr("title"," 第 "+(index+1)+" 幅风景画 ");
+          //DOM 对象
+          this.style.border="2px solid red";
+          this.title=" 第 "+(index+1)+" 幅风景画 ";});});});
+</script>
+```
+
+![img](https://img-blog.csdnimg.cn/20201112114126166.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg5MzkwMg==,size_16,color_FFFFFF,t_70)
+
+### jQuery动画与特效
+
+##### 显示隐藏动画效果
