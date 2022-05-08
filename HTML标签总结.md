@@ -1284,14 +1284,14 @@ var 变量 = (function (形式参数列表){
 <script type="text/javascript">
     // 定义函数
     var area=function(width,height) {
-    document.write(width*height);
-};
+        document.write(width*height);
+    };
 </script>
 <h1> 宽度是：3，高度是：4 的长方形面积是：<br/>
     <script type="text/javascript">
-    // 调用函数
-    area(3,4);
-</script>
+        // 调用函数
+        area(3,4);
+    </script>
 </h1>
 ```
 
@@ -3789,5 +3789,37 @@ html和css代码略
 
 # Vue.js
 
-### 
+创建一个vue项目
+
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- 引入vue -->
+		<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<!-- 定义一个vive -->
+		<div id="app">
+			{{ message }}
+		</div>
+	</body>
+	<script type="text/javascript">
+		// 定义moldel
+		var exmpleData = {
+			message: "hello word"
+		}
+		// 创建一个Vue实例或ViewModel，它连接View与 Model
+		var vm = new Vue({
+			el: '#app',
+			data: exmpleData
+		})
+	</script>
+</html>
+
+```
+
+常用参数
 
