@@ -865,3 +865,394 @@ app.listen(8000, () => {
 
 ## AJAX请求取消操作
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>取消请求</title>
+</head>
+
+<body>
+    <button>点击发送</button>
+    <button>点击取消</button>
+    <script>
+        //获取元素对象
+        const btns = document.querySelectorAll('button');
+        let x = null;
+
+        btns[0].onclick = function () {
+            x = new XMLHttpRequest();
+            x.open("GET", 'http://127.0.0.1:8000/delay');
+            x.send();
+        }
+
+        // abort
+        btns[1].onclick = function () {
+            x.abort();
+        }
+    </script>
+</body>
+
+</html>
+```
+
+## 重复请求问题
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>取消重复请求</title>
+</head>
+
+<body>
+  <button>点击请求</button>
+  <button>点击取消</button>
+  <script>
+    // 获取元素对象
+    const buttons = document.querySelectorAll('button')
+    let x = null;
+    // 设置变量标识
+    let isSending = false;// 用于判断是否在发送AJAX请求，false为未发送
+    buttons[0].onclick = function () {
+      if (isSending) x.abort() //判断如果状态为 “正在发送” 则取消发送
+      x = new XMLHttpRequest()
+      isSending = true; // 设置状态为正在发送
+      x.open('GET', 'http://127.0.0.1:8000/delay')
+      x.send()
+      x.onreadystatechange = function () {
+        if (x.readyState == 4) {
+          // 修改标识变量
+          isSending = false; // 发送完毕设置状态为 “未发送”
+        }
+      }
+    }
+    // abort
+    buttons[1].onclick = function () {
+      x.abort();
+    }
+  </script>
+</body>
+
+</html>
+```
+
+# 使用jQuery发送AJAX请求
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 发送 AJAX 请求</title>
+    <link crossorigin="anonymous" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+        rel="stylesheet">
+    <script crossorigin="anonymous" src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="page-header">jQuery发送AJAX请求 </h2>
+        <button class="btn btn-primary">GET</button>
+        <button class="btn btn-danger">POST</button>
+        <button class="btn btn-info">通用型方法ajax</button>
+    </div>
+    <script>
+        $('button').eq(0).click(function () {
+            $.get('http://127.0.0.1:8000/jquery-server', { a: 100, b: 200 }, function (data) {
+                console.log(data);
+            }, 'json');
+        });
+
+        $('button').eq(1).click(function () {
+            $.post('http://127.0.0.1:8000/jquery-server', { a: 100, b: 200 }, function (data) {
+                console.log(data);
+            });
+        });
+
+        $('button').eq(2).click(function () {
+            $.ajax({
+                //url
+                url: 'http://127.0.0.1:8000/jquery-server',
+                //参数
+                data: { a: 100, b: 200 },
+                //请求类型
+                type: 'GET',
+                //响应体结果
+                dataType: 'json',
+                //成功的回调
+                success: function (data) {
+                    console.log(data);
+                },
+                //超时时间
+                timeout: 2000,
+                //失败的回调
+                error: function () {
+                    console.log('出错啦!!');
+                },
+                //头信息
+                headers: {
+                    c: 300,
+                    d: 400
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>
+```
+
+```javascript
+// juery ajax请求处理
+app.all('/jQuery-server', (request, response) => {
+  //设置响应头  设置允许跨域
+  response.setHeader('Access-Control-Allow-Origin', '*');
+  response.setHeader('Access-Control-Allow-Headers', '*')
+  //创建一个返回的数据
+  const data = { name: 'ymj' }
+  let str = JSON.stringify(data)
+  response.send(str);
+  // response.send('Hello jQuery AJAX');
+});
+```
+
+使用JSON格式
+
+```javascript
+$('button').eq(0).click(function () {
+      $.get('http://127.0.0.1:8000/jquery-server', { a: 100, b: 200, C: 300 }, function (data) {
+        console.log(data)
+      }, 'json')
+    })
+    $('button').eq(1).click(function () {
+      $.post('http://127.0.0.1:8000/jquery-server', { a: 100, b: 200, C: 300 }, function (data) {
+        console.log(data)
+      }, 'json')
+    })
+```
+
+通用方法
+
+```javascript
+$('button').eq(2).click(function () {
+    $.ajax({
+        //url
+        url: 'http://127.0.0.1:8000/jquery-server',
+        //参数
+        data: { a: 100, b: 200 },
+        //请求类型
+        type: 'GET',
+        //响应体结果
+        dataType: 'json',
+        //成功的回调
+        success: function (data) {
+            console.log(data);
+        },
+        //超时时间
+        timeout: 2000,
+        //失败的回调
+        error: function () {
+            console.log('出错啦!!');
+        },
+        //头信息
+        headers: {
+            c: 300,
+            d: 400
+        }
+    });
+});
+```
+
+# 使用axios发送AJAX请求
+
+axios是前端热门的AJAX工具包
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script crossorigin="anonymous" src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.js"></script>
+  <!-- crossorigin="anonymous" -->
+  <title>axios 发送 AJAX请求</title>
+</head>
+
+<body>
+  <button>GET</button>
+  <button>POST</button>
+  <button>AJAX</button>
+  <script>
+    // https://github.com/axios/axios
+    const butt = document.querySelectorAll('button')
+    // 配置 baseURL
+    axios.defaults.baseURL = 'http://127.0.0.1:8000'
+
+    butt[0].onclick = function () {
+      // GET 请求
+      axios.get('/axios-server', {
+        // url参数
+        params: {
+          id: 100,
+          vip: 7
+        },
+        // 请求头信息
+        headers: {
+          name: 'ymj',
+          age: 20
+        }
+      }).then(value => {
+        console.log(value)
+      })
+    }
+    butt[1].onclick = function () {
+      // POST 请求
+      axios.post('/axios-server', {
+        username: 'ymj',
+        password: '123456'
+      }, {
+        // url参数
+        params: {
+          id: 200,
+          vip: 8
+        },
+        // 请求头参数
+        headers: {
+          weight: 200,
+          height: 200
+        }
+      })
+    }
+    butt[2].onclick = function () {
+      axios({
+        // 请求方法
+        method: 'POST',
+        // 请求链接
+        url: '/axios-server',
+        // url 参数
+        params: {
+          vip: 33,
+          level: 39
+        },
+        // 请求体参数
+        data: {
+          username: 'admin',
+          password: 'admin'
+        },
+        // 请求头信息
+        headers: {
+          a: 100,
+          b: 200
+        }
+      }).then(response => {
+        // 响应状态码
+        console.log(response.status);
+        // 响应状态字符串
+        console.log(response.statusText);
+        // 响应头信息
+        console.log(response.headers);
+        // 响应体
+        console.log(response.data);
+      })
+    }
+  </script>
+</body>
+
+</html>
+```
+
+```javascript
+//1. 引入express
+const express = require('express');
+
+//2. 创建应用对象
+const app = express();
+
+//3. 创建路由规则
+// request 是对请求报文的封装
+// response 是对响应报文的封装
+
+// axios 请求处理
+app.all('/axios-server', (request, response) => {
+  //设置响应头  设置允许跨域
+  response.setHeader('Access-Control-Allow-Origin', '*');
+  response.setHeader('Access-Control-Allow-Headers', '*')
+  //创建一个返回的数据
+  const data = { name: 'ymj' }
+  let str = JSON.stringify(data)
+  response.send(str);
+  // response.send('Hello axios AJAX');
+});
+//  监听端口启用服务
+app.listen(8000, () => {
+  console.log("服务已启动")
+})
+```
+
+# 使用fetch发送AJAX请求
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch 发送 AJAX请求</title>
+</head>
+<body>
+    <button>AJAX请求</button>
+    <script>
+        //文档地址
+        //https://developer.mozilla.org/zh-CN/docs/Web/API/WindowOrWorkerGlobalScope/fetch
+        
+        const btn = document.querySelector('button');
+
+        btn.onclick = function(){
+            fetch('http://127.0.0.1:8000/fetch-server?vip=10', {
+                //请求方法
+                method: 'POST',
+                //请求头
+                headers: {
+                    name:'atguigu'
+                },
+                //请求体
+                body: 'username=admin&password=admin'
+            }).then(response => {
+                // return response.text();
+                return response.json();
+            }).then(response=>{
+                console.log(response);
+            });
+        }
+    </script>
+</body>
+</html>
+```
+
+```javascript
+// fetch 请求处理
+app.all('/fetch-server', (request, response) => {
+  //设置响应头  设置允许跨域
+  response.setHeader('Access-Control-Allow-Origin', '*');
+  response.setHeader('Access-Control-Allow-Headers', '*')
+  //创建一个返回的数据
+  const data = { name: 'ymj' }
+  let str = JSON.stringify(data)
+  response.send(str);
+  // response.send('Hello axios AJAX');
+});
+```
+
