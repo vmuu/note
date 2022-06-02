@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<body> <button id="btn">按钮</button>
+  <ul id="list"></ul>
+  <script type="text/javascript" src="./jquery-1.12.3.js"></script>
+  <script type="text/javascript"> window.onload = function () {
+      var btn = document.getElementById('btn') btn.onclick = function () {
+        $.getJSON("http://api.douban.com/v2/movie/in_theaters?callback=?", function (data) {
+          console.log(data); //获取所有的电影的条目 var subjects = data.subjects; //遍历电影条目
+          for (var i = 0; i < subjects.length; i++) {
+            $("#list").append("<li>" + subjects[i].title + "<br />" + "<img src=\"" + subjects[i].images.large + "\" >" + "</li>");
+          }
+        });
+      }
+    } </script>
+  <script>
+    router.get("/testAJAX", function (req, res) {
+  </script>
+</body>
+
+</html>
