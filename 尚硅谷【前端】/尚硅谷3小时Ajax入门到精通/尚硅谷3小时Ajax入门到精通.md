@@ -105,7 +105,7 @@ TTP/1.1  200  OK
 200（成功） 服务器已成功处理了请求。 通常，这表示服务器提供了请求的网页。
 ```
 
-
+常用的状态码及含义：https://www.jianshu.com/p/c8c756c49f7f
 
 # 二、express框架
 
@@ -180,6 +180,14 @@ app.listen(8000,()=>{
 ```bash
 npm install -g nodemon
 ```
+
+使用命令：
+
+```
+nodemon
+```
+
+
 
 # 三、原生AJAX请求的基本操作
 
